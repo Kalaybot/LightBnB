@@ -117,7 +117,7 @@ const getAllProperties = (options, limit = 10) => {
   // Filter by City
   if (options.city) {
     queryParams.push(`%${options.city}%`);
-    queryString += `WHERE city LIKE $${queryParams.length} `;
+    whereClause.push(`city LIKE $${queryParams.length} `);
   }
   // Filter by Owner_ID
   if (options.owner_id) {
