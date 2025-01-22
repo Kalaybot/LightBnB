@@ -23,7 +23,8 @@ const getUserWithEmail = (email) => {
     .query(`SELECT * FROM users WHERE email = $1;`, [email])
     .then((result) => result.rows[0] || null)
     .catch((err) => {
-      console.log('Error fetching user:', err.message)
+      console.log('Error fetching user:', err.message);
+      throw err;
     });
 }
 
@@ -38,7 +39,8 @@ const getUserWithId = (id) => {
     .query(`SELECT * FROM users WHERE id = $1;`, [id])
     .then((result) => result.rows[0] || null)
     .catch((err) => {
-      console.log('Error fetching user by id:', err.message)
+      console.log('Error fetching user by id:', err.message);
+      throw err;
     });
 }
 
@@ -58,7 +60,8 @@ const addUser = (user) => {
     )
     .then((result) => result.rows[0])
     .catch((err) => {
-      console.log("Error adding user:", err.message)
+      console.log("Error adding user:", err.message);
+      throw err;
     });
 }
 
@@ -89,6 +92,7 @@ const getAllReservations = (guest_id, limit = 10) => {
     })
     .catch((err) => {
       console.log("Error getting all your reservation:", err.message);
+      throw err;
     })
 }
 
@@ -201,6 +205,7 @@ const addProperty = (property) => {
     .then((res) => res.rows[0])
     .catch((err) => {
       console.log("Error adding property:", err.message);
+      throw err;
     });
 };
 
